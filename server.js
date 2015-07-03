@@ -8,9 +8,9 @@ var path				= require('path');
 
 // SETUP DATABASE
 // ============================
-var sequelize = new Sequelize(config.database);
-app.set('sequelize', sequelize);
-sequelize.sync({force: true});
+var models = require('./app/models');
+app.set('models', models);
+app.set('sequelize', models.sequelize);
 
 // SETUP MIDDLEWARE 
 // ============================

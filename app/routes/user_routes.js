@@ -2,7 +2,8 @@ module.exports = function(express, app) {
 	
 	var bcrypt = require('bcrypt-nodejs');
 	var router = express.Router();
-	var User   = require('../models/user')(app);
+	var User = app.get('models').User;
+	console.log(User);
 	var jwt    = require('jsonwebtoken');
 	var config = require('../../config');
 	

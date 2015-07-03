@@ -1,8 +1,7 @@
-module.exports = function(app) {
-	var bcrypt 	  = require('bcrypt-nodejs');
-	var Sequelize = require('sequelize');
-	var sequelize = app.get('sequelize');
+module.exports = function(sequelize, Sequelize) {
 	
+	var bcrypt 	  = require('bcrypt-nodejs');
+
 	var User = sequelize.define('User', {
 		userName: { 
 			type: Sequelize.STRING, 
@@ -17,6 +16,7 @@ module.exports = function(app) {
 			type: Sequelize.STRING, 
 			validate: {
 				isEmail: true,
+				notEmpty: true
 			},
 			allowNull: false
 		},
