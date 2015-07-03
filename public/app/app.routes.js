@@ -4,9 +4,11 @@ angular.module('horribleFilm', ['ngRoute'])
 	$routeProvider
 	
 		.when('/', {
-			templateUrl : 'views/pages/home.html',
-			controller: 'MainCtrl',
-			controllerAs: 'main'
+			templateUrl : 'views/pages/home.html'
+		})
+		
+		.when('/register', {
+			templateUrl: 'views/pages/register.html'	
 		})
 		
 		.when('/users', {

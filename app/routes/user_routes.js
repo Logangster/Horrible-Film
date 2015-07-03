@@ -4,7 +4,6 @@ module.exports = function(express, app) {
 	var router = express.Router();
 	var User = app.get('models').User;
 	var Profile = app.get('models').Profile;
-	console.log(User);
 	var jwt    = require('jsonwebtoken');
 	var config = require('../../config');
 	
@@ -55,6 +54,7 @@ module.exports = function(express, app) {
 			User.create(req.body)
 			.then(function(user) {
 				
+				//Create a blank profile for the user upon registration(prone to change)
 				Profile.create({aboutMe: 'test', favoriteFilms: '', links: ''})
 				.then(function(profile) {
 					user.setProfile(profile);
@@ -69,7 +69,7 @@ module.exports = function(express, app) {
 		
 	router.route('/users/:user_name')
 	
-		// Get user by userName
+		// Get user by userName and also include their profile
 		.get(function(req, res) {
 			User.findOne({ 
 				where: { userName: req.params.user_name },

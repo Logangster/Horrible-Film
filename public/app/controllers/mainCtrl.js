@@ -1,5 +1,6 @@
 angular.module('horribleFilm').controller('MainCtrl', function() {
 	var vm = this;
 	
-	vm.message = "Hello!";
+	//Mock for now until authentication is in place!
+	vm.loggedIn = false;
 });
