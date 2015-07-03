@@ -14,5 +14,10 @@ angular.module('horribleFilm')
 		return $http.get('/api/users/' + userName);	
 	};
 	
+	//Create user
+	userFactory.create = function(user) {
+		return $http.post('/api/users/', user);
+	};
+	
 	return userFactory;
 });

@@ -63,7 +63,7 @@ module.exports = function(express, app) {
 				return res.json(user);
 			},
 			function(err) {
-				return res.json(err);
+				return res.json({success: false});
 			});
 		})
 		

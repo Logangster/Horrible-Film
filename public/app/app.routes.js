@@ -8,7 +8,9 @@ angular.module('horribleFilm', ['ngRoute'])
 		})
 		
 		.when('/register', {
-			templateUrl: 'views/pages/register.html'	
+			templateUrl: 'views/pages/register.html',
+			controller: 'RegistrationCtrl',
+			controllerAs: 'register'	
 		})
 		
 		.when('/users', {
