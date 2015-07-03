@@ -40,4 +40,13 @@ hr {
     border-color: black;
 }
 
+.panel-heading > a  {
+    color: white;
+}
+
+.panel-heading > a:hover {
+    color: blue;
+    text-decoration: none;
+}
+
 

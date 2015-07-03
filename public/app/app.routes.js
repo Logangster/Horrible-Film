@@ -13,6 +13,12 @@ angular.module('horribleFilm', ['ngRoute'])
 			templateUrl: 'views/users/index.html',
 			controller: 'UserCtrl',
 			controllerAs: 'user'
+		})
+		
+		.when('/users/:user_name', {
+			templateUrl: 'views/users/show.html',
+			controller: 'UserShowCtrl',
+			controllerAs: 'userShow'
 		});
 		
 	$locationProvider.html5Mode(true);
