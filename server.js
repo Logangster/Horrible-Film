@@ -6,7 +6,7 @@ var fs 					= require('fs');
 var Sequelize			= require('sequelize');
 var path				= require('path');
 
-// SETUP DATABASE
+// SETUP DATABASE/MODELS
 // ============================
 var models = require('./app/models');
 app.set('models', models);

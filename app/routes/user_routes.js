@@ -3,6 +3,7 @@ module.exports = function(express, app) {
 	var bcrypt = require('bcrypt-nodejs');
 	var router = express.Router();
 	var User = app.get('models').User;
+	var Profile = app.get('models').Profile;
 	console.log(User);
 	var jwt    = require('jsonwebtoken');
 	var config = require('../../config');
@@ -50,8 +51,15 @@ module.exports = function(express, app) {
 		
 		// Create new user
 		.post(function(req, res) {
+			
 			User.create(req.body)
 			.then(function(user) {
+				
+				Profile.create({aboutMe: 'test', favoriteFilms: '', links: ''})
+				.then(function(profile) {
+					user.setProfile(profile);
+				});
+				
 				return res.json(user);
 			},
 			function(err) {
@@ -63,7 +71,10 @@ module.exports = function(express, app) {
 	
 		// Get user by userName
 		.get(function(req, res) {
-			User.findOne({ where: { userName: req.params.user_name } })
+			User.findOne({ 
+				where: { userName: req.params.user_name },
+				include:[{ model: Profile}] 
+			})
 			.then(function(user) {
 				if (user != null) {
 					return res.json(user);
@@ -75,7 +86,7 @@ module.exports = function(express, app) {
 		
 		// Remove user by userName
 		.delete(function(req, res) {
-			User.destroy({ where: {userName: req.params.user_name}})
+			User.destroy({ where: { userName: req.params.user_name } })
 			.then(function(user) {
 				return res.json({success: true});
 			}, function(err) {

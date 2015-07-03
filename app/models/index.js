@@ -14,4 +14,9 @@ fs.readdirSync(__dirname)
 	module.exports[model.name] = model;
 });
 
+(function(m) {
+	m.User.hasOne(m.Profile);
+	m.Profile.belongsTo(m.User);
+})(module.exports);
+
 module.exports.sequelize = sequelize;
