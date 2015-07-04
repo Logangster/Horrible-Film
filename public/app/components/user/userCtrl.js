@@ -6,7 +6,7 @@ angular.module('horribleFilm')
 	
 	//Retrive all users and set the users property
 	User.all().then(function(response) {
-		vm.users = response.data;
+			vm.users = response.data;
 	});
 	
 });

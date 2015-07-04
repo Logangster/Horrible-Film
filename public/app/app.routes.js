@@ -4,11 +4,11 @@ angular.module('horribleFilm', ['ngRoute'])
 	$routeProvider
 	
 		.when('/', {
-			templateUrl : 'views/pages/home.html'
+			templateUrl : 'app/components/page/home.html'
 		})
 		
 		.when('/register', {
-			templateUrl: 'views/pages/register.html',
+			templateUrl: 'app/components/page/register.html',
 			controller: 'RegistrationCtrl',
 			controllerAs: 'register'	
 		})
@@ -17,19 +17,19 @@ angular.module('horribleFilm', ['ngRoute'])
 		// ===========================
 		
 		.when('/users', {
-			templateUrl: 'views/users/index.html',
+			templateUrl: 'app/components/user/index.html',
 			controller: 'UserCtrl',
 			controllerAs: 'user'
 		})
 		
 		.when('/users/:user_name', {
-			templateUrl: 'views/users/show.html',
+			templateUrl: 'app/components/user/show.html',
 			controller: 'UserShowCtrl',
 			controllerAs: 'userShow'
 		})
 		
 		.when('/users/:user_name/edit', {
-			templateUrl: 'views/users/edit.html',
+			templateUrl: 'app/components/user/edit.html',
 			controller: 'UserEditCtrl',
 			controllerAs: 'userEdit'
 		});

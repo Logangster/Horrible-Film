@@ -31,7 +31,7 @@ fs.readdirSync(__dirname + '/app/routes').forEach( function(file) {
 });
 
 app.get('*', function(req, res) {
-	res.sendFile(path.join(__dirname, '/public/views/index.html'));
+	res.sendFile(path.join(__dirname, '/public/app/index.html'));
 });
 
 app.listen(config.port);

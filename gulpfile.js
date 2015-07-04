@@ -7,8 +7,8 @@ var ngAnnotate = require ('gulp-ng-annotate');
 var nodemon	= require('gulp-nodemon');
 
 gulp.task('scripts', function() {
-	return gulp.src(['./public/app/*.js', './public/app/services/*.js',
-			'./public/app/controllers/*.js', './public/app/controllers/**/*.js'])
+	return gulp.src(['./public/app/app.js', './public/app/app.routes.js', './public/app/mainCtrl.js',
+		 './public/app/components/**/*.js'])
 			.pipe(concat('all.min.js'))
       .pipe(ngAnnotate())
 			.pipe(uglify())
