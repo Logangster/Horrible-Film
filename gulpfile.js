@@ -15,7 +15,7 @@ gulp.task('scripts', function() {
 			.pipe(gulp.dest('./public/assets/javascript'));
 });
 
-gulp.task('watch', function() {
+gulp.task('default', function() {
 	nodemon({ 
 		script: 'server.js',
 		ext: 'html js',
@@ -25,4 +25,4 @@ gulp.task('watch', function() {
 		console.log('restarted!');
 	});
 });
-gulp.task('default', ['scripts']);
+
