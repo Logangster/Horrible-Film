@@ -3,7 +3,7 @@ var path = require('path');
 var config = require('../../config');
 var Sequelize = require('sequelize');
 var sequelize = new Sequelize(config.database);
-sequelize.sync({ force: true });
+sequelize.sync();
 
 //Import all the models except for the index.js file
 fs.readdirSync(__dirname)

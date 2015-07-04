@@ -13,6 +13,9 @@ angular.module('horribleFilm', ['ngRoute'])
 			controllerAs: 'register'	
 		})
 		
+		// USER ROUTES
+		// ===========================
+		
 		.when('/users', {
 			templateUrl: 'views/users/index.html',
 			controller: 'UserCtrl',
@@ -23,6 +26,12 @@ angular.module('horribleFilm', ['ngRoute'])
 			templateUrl: 'views/users/show.html',
 			controller: 'UserShowCtrl',
 			controllerAs: 'userShow'
+		})
+		
+		.when('/users/:user_name/edit', {
+			templateUrl: 'views/users/edit.html',
+			controller: 'UserEditCtrl',
+			controllerAs: 'userEdit'
 		});
 		
 	$locationProvider.html5Mode(true);
