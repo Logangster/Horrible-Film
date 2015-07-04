@@ -19,11 +19,17 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.0.3",
     "gulp-uglify": "^1.2.0",
+    "jasmine-core": "^2.3.4",
     "jsonwebtoken": "^5.0.2",
+    "karma": "^0.12.37",
+    "karma-jasmine": "^0.3.6",
     "morgan": "^1.6.0",
     "pg": "^4.4.0",
     "pg-hstore": "^2.3.2",
     "require-dir": "^0.3.0",
     "sequelize": "^3.3.2"
+  },
+  "devDependencies": {
+    "karma-firefox-launcher": "^0.1.6"
   }
 }
