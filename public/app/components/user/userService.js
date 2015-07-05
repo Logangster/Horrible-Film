@@ -1,6 +1,6 @@
 angular.module('horribleFilm')
 
-.factory('User', function($http) {
+.factory('User', ['$http', function($http) {
 	
 	var userFactory = {};
 	
@@ -20,4 +20,4 @@ angular.module('horribleFilm')
 	};
 	
 	return userFactory;
-});
+}]);

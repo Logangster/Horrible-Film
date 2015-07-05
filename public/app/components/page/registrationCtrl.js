@@ -1,5 +1,6 @@
 angular.module('horribleFilm')
-.controller('RegistrationCtrl', function(User, $location, $http, $rootScope) {
+.controller('RegistrationCtrl', ['User', '$location', '$http', 
+	function(User, $location, $http) {
 	
 	var vm = this;
 
@@ -16,4 +17,4 @@ angular.module('horribleFilm')
 
 		});
 	};
-});
+}]);

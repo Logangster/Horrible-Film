@@ -1,5 +1,5 @@
 angular.module('horribleFilm')
-.controller('UserEditCtrl', function($routeParams, User) {
+.controller('UserEditCtrl', ['$routeParams', 'User', function($routeParams, User) {
 	
 	var vm = this;
 
@@ -7,4 +7,4 @@ angular.module('horribleFilm')
 		vm.profile = response.data.Profile;
 	});
 	
-});
+}]);

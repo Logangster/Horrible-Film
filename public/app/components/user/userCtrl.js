@@ -1,6 +1,6 @@
 angular.module('horribleFilm')
 
-.controller('UserCtrl', function(User, $scope) {
+.controller('UserCtrl', ['User', '$scope', function(User, $scope) {
 	
 	var vm = this;
 	
@@ -12,5 +12,4 @@ angular.module('horribleFilm')
 	}
 	
 	getUsers();
-
-});
+}]);
