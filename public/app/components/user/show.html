@@ -1,21 +1,23 @@
-<h1>{{ userShow.user.userName }}</h1>
-<hr></hr>
-<div class="col-xs-6" ng-if="userShow.user">
-	<div class="panel panel-primary">
-		<div class="panel-heading">About Me</div>
-		<div class="panel-body">
-			{{userShow.user.Profile.aboutMe}}
-		</div>
-	</div>
+<div class="jumbotron container">
+	<h1>{{ userShow.user.userName }}</h1>
+	<hr></hr>
+	<div class="col-xs-6" ng-if="userShow.user">
 		<div class="panel panel-primary">
-		<div class="panel-heading">Favorite Horrible Films</div>
-		<div class="panel-body">
-			{{userShow.user.Profile.favoriteFilms}}
+			<div class="panel-heading">About Me</div>
+			<div class="panel-body">
+				{{userShow.user.Profile.aboutMe}}
+			</div>
 		</div>
-	</div>
-	
-	<p>Links/Blogs</p>
-	<div class="panel panel-default">
-		<div class="panel-body">{{userShow.user.Profile.links}}</div>
+			<div class="panel panel-primary">
+			<div class="panel-heading">Favorite Horrible Films</div>
+			<div class="panel-body">
+				{{userShow.user.Profile.favoriteFilms}}
+			</div>
+		</div>
+		
+		<p>Links/Blogs</p>
+		<div class="panel panel-default">
+			<div class="panel-body">{{userShow.user.Profile.links}}</div>
+		</div>
 	</div>
 </div>

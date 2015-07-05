@@ -1,7 +1,7 @@
 <h1>Users</h1>
 <hr></hr>
-<div class="col-xs-6" ng-if="user.users">
-	<div class="panel panel-success" ng-repeat="person in user.users">
+<div class="col-xs-6" ng-if="users">
+	<div class="panel panel-primary" ng-repeat="person in users">
 		<div class="panel-heading">
 			<a ng-href="/users/{{person.userName}}">{{ person.userName }}</a>
 		</div>

@@ -6,7 +6,6 @@ angular.module('horribleFilm')
 	
 	//Get all users
 	userFactory.all = function() {
-		console.log('weird!');
 		return $http.get('/api/users/');
 	};
 	
