@@ -12,7 +12,7 @@ angular.module('horribleFilm')
 		User.create(vm.newUser)
 		.then(function(response) {
 			if (response.data.success !== false) {
-				$location.path('/users/' + vm.newUser.userName);
+				$location.path('/users/' + vm.newUser.userName + '/edit/');
 			}
 
 		});

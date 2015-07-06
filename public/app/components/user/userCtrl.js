@@ -1,13 +1,13 @@
 angular.module('horribleFilm')
 
-.controller('UserCtrl', ['User', '$scope', function(User, $scope) {
+.controller('UserCtrl', ['User', function(User) {
 	
 	var vm = this;
 	
 	//Retrive all users and set the users property
 	function getUsers() {
 		User.all().then(function(response) {
-			$scope.users = response.data;
+			vm.users = response.data;
 		});
 	}
 	
