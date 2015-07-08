@@ -7,6 +7,27 @@ module.exports = function(express, app) {
 	var jwt    = require('jsonwebtoken');
 	var config = require('../../config');
 	
+	//Checks for user authentication
+	function authenticate (req, res, next) {
+		var token = req.body.token || req.query.token || req.headers['x-access-token'];
+		
+		if (token) {
+			jwt.verify(token, config.secret, function(err, decoded) {
+				//Token doesn't verify correctly
+				if (err) {
+					return res.status(403).send({success: false, message: "Token failed to authenticate"});
+				//Valid token!
+				} else {
+					req.decoded = decoded;
+					next();
+				}
+			});
+		// No token provided
+		} else {
+			return res.status(403).send({success: false, message: 'No token provided'});
+		}
+	}
+	
 	router.post('/authenticate', function(req, res) {
 		//Find user to authenticate by userName
 		User.find({ where: { userName: req.body.userName } }).then(function(user) {
@@ -70,7 +91,7 @@ module.exports = function(express, app) {
 	router.route('/users/:user_name')
 	
 		// Get user by userName and also include their profile
-		.get(function(req, res) {
+		.get(authenticate, function(req, res) {
 			User.findOne({ 
 				where: { userName: req.params.user_name },
 				include:[{ model: Profile}] 

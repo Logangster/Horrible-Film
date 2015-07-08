@@ -5,10 +5,16 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var ngAnnotate = require ('gulp-ng-annotate');
 var nodemon	= require('gulp-nodemon');
+var gulpIgnore = require('gulp-ignore');
 
 gulp.task('scripts', function() {
-	return gulp.src(['./public/app/app.js', './public/app/app.routes.js', './public/app/mainCtrl.js',
-		 './public/app/components/**/*.js'])
+	return gulp.src([
+		 './public/app/app.module.js',
+		 './public/app/app.routes.js', './public/app/mainCtrl.js',
+		 './public/app/components/**/*Service.js', 	 
+		 './public/app/components/**/*Ctrl.js',
+		 '!./public/app/components/**/*Spec.js', 
+		 './public/app/app.config.js'])
 			.pipe(concat('all.min.js'))
       .pipe(ngAnnotate())
 			.pipe(uglify())

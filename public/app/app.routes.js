@@ -1,4 +1,4 @@
-angular.module('horribleFilm', ['ngRoute'])
+angular.module('horribleFilm')
 
 .config(function($routeProvider, $locationProvider) {
 	$routeProvider
