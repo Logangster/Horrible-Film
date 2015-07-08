@@ -6,27 +6,9 @@ module.exports = function(express, app) {
 	var Profile = app.get('models').Profile;
 	var jwt    = require('jsonwebtoken');
 	var config = require('../../config');
+	var userMiddleware = require('../middleware/user_middleware');
 	
-	//Checks for user authentication
-	function authenticate (req, res, next) {
-		var token = req.body.token || req.query.token || req.headers['x-access-token'];
-		
-		if (token) {
-			jwt.verify(token, config.secret, function(err, decoded) {
-				//Token doesn't verify correctly
-				if (err) {
-					return res.status(403).send({success: false, message: "Token failed to authenticate"});
-				//Valid token!
-				} else {
-					req.decoded = decoded;
-					next();
-				}
-			});
-		// No token provided
-		} else {
-			return res.status(403).send({success: false, message: 'No token provided'});
-		}
-	}
+
 	
 	router.post('/authenticate', function(req, res) {
 		//Find user to authenticate by userName
@@ -91,7 +73,7 @@ module.exports = function(express, app) {
 	router.route('/users/:user_name')
 	
 		// Get user by userName and also include their profile
-		.get(authenticate, function(req, res) {
+		.get(userMiddleware.authenticate, function(req, res) {
 			User.findOne({ 
 				where: { userName: req.params.user_name },
 				include:[{ model: Profile}] 
@@ -106,7 +88,12 @@ module.exports = function(express, app) {
 		})
 		
 		// Remove user by userName
-		.delete(function(req, res) {
+		.delete(userMiddleware.authenticate,function(req, res) {
+			
+			//Make sure users can only delete themselves
+			if (!req.decoded || req.decoded.userName !== req.params.user_name)
+				return res.status(403).send({success: false});
+				
 			User.destroy({ where: { userName: req.params.user_name } })
 			.then(function(user) {
 				return res.json({success: true});
@@ -114,6 +101,12 @@ module.exports = function(express, app) {
 				return res.json(err);
 			});
 		});
-				
+			
+		
+	//Get the current user based off of a token 
+	router.get('/me', userMiddleware.authenticate, function(req, res) {
+		return res.json(req.decoded);
+	});
+		
 	return router;
 };
