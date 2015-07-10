@@ -1,6 +1,6 @@
 angular.module('horribleFilm')
-.controller('SessionCtrl', ['User', 'Auth', '$location', '$http', 'AuthToken',
-	function(User, Auth, $location, $http, AuthToken) {
+.controller('SessionCtrl', ['User', 'Auth', '$location', '$http', 'AuthToken', 'Flash',
+	function(User, Auth, $location, $http, AuthToken, Flash) {
 	
 	var vm = this;
 
@@ -12,6 +12,7 @@ angular.module('horribleFilm')
 		User.create(vm.newUser)
 		.then(function(response) {
 			if (response.data.success !== false) {
+				Flash.create('success', 'User has been successfully created! Login and edit your profile now!!!', 'custom-class');
 				$location.path('/users/' + vm.newUser.userName + '/edit/');
 			}
 

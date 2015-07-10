@@ -6,9 +6,11 @@
 		<base href="/">
 		<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css"></link>
 		<link rel="stylesheet" type="text/css" href="/assets/css/custom.css"></link>
+		<link rel="stylesheet" type="text/css" href="/assets/css/angular-flash.min.css"></link>
 			
 		<script src="/assets/javascript/angular.min.js"></script>
 		<script src="/assets/javascript/angular-route.min.js"></script>
+		<script src="/assets/javascript/angular-flash.min.js"></script>
 			
 		<!-- App -->
 		<script src="/assets/javascript/all.min.js"></script>
@@ -40,6 +42,7 @@
 		        </div><!-- /.navbar-collapse --> 
 		      </div><!-- /.container-fluid --> 
 	    </nav> 
+		<div flash-message="5000" class="container" ></div> 
 		<div class="container" ng-view></div>
 	</body>
 </html>

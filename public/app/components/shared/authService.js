@@ -1,6 +1,6 @@
 angular.module('horribleFilm')
 
-.factory('AuthToken', function($window) {
+.factory('AuthToken', ['$window', function($window) {
 	var authTokenFactory = {};
 	
 	authTokenFactory.getToken = function() {
@@ -15,9 +15,9 @@ angular.module('horribleFilm')
 	};
 	
 	return authTokenFactory;
-})
+}])
 
-.factory('Auth', function ($http, $q, AuthToken) {
+.factory('Auth', ['$http', '$q', 'AuthToken', function ($http, $q, AuthToken) {
 	var authFactory = {};
 	
 	authFactory.login = function(userName, password) {
@@ -47,9 +47,9 @@ angular.module('horribleFilm')
 	};
 	
 	return authFactory;	
-})
+}])
 
-.factory('AuthInterceptor', function ($q, $location, AuthToken) {
+.factory('AuthInterceptor', ['$q', '$location', 'AuthToken', function ($q, $location, AuthToken) {
 	var interceptorFactory = {};
 	
 	interceptorFactory.request = function(config) {
@@ -72,4 +72,4 @@ angular.module('horribleFilm')
 	
 	return interceptorFactory;
 	
-});
+}]);
