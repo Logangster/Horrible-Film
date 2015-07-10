@@ -1,54 +1,43 @@
 <div class="jumbotron">
-<form class="form-horizontal" ng-submit="register.submitRegistration()" name="registrationForm">
-  <fieldset>
-    <legend class="text-center">Registration</legend>
-		 <div class="form-group">
-      <label for="inputEmail" class="col-lg-2 control-label">Username</label>
-      <div class="col-lg-10">
-        
-        <input type="text" name="userName" class="form-control" id="inputEmail" placeholder="Username"
-					ng-model="register.newUser.userName" required>
-          
+  <form class="form-horizontal" ng-submit="register.submitRegistration()" name="registrationForm">
+    <fieldset>
+      <legend class="text-center">Registration</legend>
+      <div class="form-group">
+        <label for="inputEmail" class="col-lg-2 control-label">Username</label>
+        <div class="col-lg-10">
+          <input type="text" name="userName" class="form-control" id="inputEmail" placeholder="Username" ng-model="register.newUser.userName"
+          required>
           <div style="color:red" ng-show="registrationForm.userName.$dirty && registrationForm.userName.$invalid">
             <small class="error" ng-show="registrationForm.userName.$error.required">Username is required.</small>
-         </div>
-         
+          </div>
+        </div>
       </div>
-    </div>
-    
-    <div class="form-group">
-      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-      <div class="col-lg-10">
-        
-        <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email"
-					ng-model="register.newUser.email" required>
-          
-         <div style="color:red" ng-show="registrationForm.email.$dirty && registrationForm.email.$invalid">
+      <div class="form-group">
+        <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+        <div class="col-lg-10">
+          <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email" ng-model="register.newUser.email"
+          required>
+          <div style="color:red" ng-show="registrationForm.email.$dirty && registrationForm.email.$invalid">
             <small class="error" ng-show="registrationForm.email.$error.required">Email is required.</small>
             <small class="error" ng-show="registrationForm.email.$error.email">Invalid format.</small>
-         </div>
-         
+          </div>
+        </div>
       </div>
-    </div>
-		
-    <div class="form-group">
-      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-      <div class="col-lg-10">
-        <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password"
-					ng-model="register.newUser.password" required>
-          
-         <div style="color:red" ng-show="registrationForm.password.$dirty && registrationForm.password.$invalid">
+      <div class="form-group">
+        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+        <div class="col-lg-10">
+          <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="register.newUser.password"
+          required>
+          <div style="color:red" ng-show="registrationForm.password.$dirty && registrationForm.password.$invalid">
             <small class="error" ng-show="registrationForm.password.$error.required">Password is required.</small>
-         </div>
-         
+          </div>
+        </div>
       </div>
-    </div>
-		
-    <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
-        <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
       </div>
-    </div>
-  </fieldset>
-</form>
+    </fieldset>
+  </form>
 </div>

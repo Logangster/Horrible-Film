@@ -1,35 +1,30 @@
 <div class="jumbotron">
-<form class="form-horizontal">
-  <fieldset>
-    <legend class="text-center">Edit Profile</legend>
-		 <div class="form-group">
-      <label for="aboutMe" class="col-lg-2 control-label">About Me</label>
-      <div class="col-lg-10">
-        <textarea class="form-control" id="aboutMe"
-          ng-model="userEdit.profile.aboutMe"></textarea>
+  <form class="form-horizontal">
+    <fieldset>
+      <legend class="text-center">Edit Profile</legend>
+      <div class="form-group">
+        <label for="aboutMe" class="col-lg-2 control-label">About Me</label>
+        <div class="col-lg-10">
+          <textarea class="form-control" id="aboutMe" ng-model="userEdit.profile.aboutMe"></textarea>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="favoriteFilms" class="col-lg-2 control-label">Favorite Horrible Films</label>
-      <div class="col-lg-10">
-        <textarea class="form-control" id="favoriteFilms"
-					ng-model="userEdit.profile.favoriteFilms"></textarea>
+      <div class="form-group">
+        <label for="favoriteFilms" class="col-lg-2 control-label">Favorite Horrible Films</label>
+        <div class="col-lg-10">
+          <textarea class="form-control" id="favoriteFilms" ng-model="userEdit.profile.favoriteFilms"></textarea>
+        </div>
       </div>
-    </div>
-		
-    <div class="form-group">
-      <label for="links" class="col-lg-2 control-label">Links to blogs/films</label>
-      <div class="col-lg-10">
-        <input type="text" class="form-control" id="links" placeholder="Password"
-					ng-model="userEdit.profile.links">
+      <div class="form-group">
+        <label for="links" class="col-lg-2 control-label">Links to blogs/films</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" id="links" placeholder="Password" ng-model="userEdit.profile.links">
+        </div>
       </div>
-    </div>
-		
-    <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
-        <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
       </div>
-    </div>
-  </fieldset>
-</form>
+    </fieldset>
+  </form>
 </div>
