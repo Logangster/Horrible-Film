@@ -1,6 +1,6 @@
 angular.module('horribleFilm')
-.controller('SessionCtrl', ['User', 'Auth', '$location', '$http', 'AuthToken', 'Flash',
-	function(User, Auth, $location, $http, AuthToken, Flash) {
+.controller('SessionCtrl', ['User', 'Auth', '$location', '$http', 'AuthToken', 'Flash', '$window',
+	function(User, Auth, $location, $http, AuthToken, Flash, $window) {
 	
 	var vm = this;
 
@@ -28,7 +28,15 @@ angular.module('horribleFilm')
 				if (response.data.success == true) {
 					Flash.create('success', 'You have been successfully logged in!', 'custom-class');
 					AuthToken.setToken(response.data.token);
-					$location.path('/users');
+					
+					//Temporary solution to redirect upon login to the path they were trying to access before
+					if ($window.localStorage.getItem('redirectPath')) {
+						$location.path($window.localStorage.getItem('redirectPath'));
+						$window.localStorage.removeItem('redirectPath');
+					} else {
+						$location.path('/');
+					}
+					
 				} else {
 					Flash.create('danger', 'Wrong username/password combination.', 'custom-class');
 				}

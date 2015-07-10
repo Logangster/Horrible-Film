@@ -1,4 +1,6 @@
-angular.module('horribleFilm').controller('MainCtrl', function(Auth, $rootScope, $location) {
+angular.module('horribleFilm').controller('MainCtrl', ['Auth', '$rootScope', '$location', '$window',
+	function(Auth, $rootScope, $location, $window) {
+	
 	var vm = this;
 	
 	//Mock for now until authentication is in place!
@@ -12,11 +14,14 @@ angular.module('horribleFilm').controller('MainCtrl', function(Auth, $rootScope,
 		}, function(err) {
 			vm.userName = undefined;
 		});
+		
 	});
 	
-	vm.logout = function () {
+	vm.logout = function ($event) {
+		$event.preventDefault();
 		Auth.logout();
 		$location.path('/');
+	
 	};
 	
-});
+}]);

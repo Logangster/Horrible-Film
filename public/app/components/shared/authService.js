@@ -49,7 +49,7 @@ angular.module('horribleFilm')
 	return authFactory;	
 }])
 
-.factory('AuthInterceptor', ['$q', '$location', 'AuthToken', function ($q, $location, AuthToken) {
+.factory('AuthInterceptor', ['$q', '$location', 'AuthToken', '$window', function ($q, $location, AuthToken, $window) {
 	var interceptorFactory = {};
 	
 	interceptorFactory.request = function(config) {
@@ -62,7 +62,10 @@ angular.module('horribleFilm')
 	};
 	
 	interceptorFactory.responseError = function(response) {
-
+		
+		//Temporary solution, save their previous accessed path so that they can access when they log in
+		$window.localStorage.setItem('redirectPath', $location.path());
+		
 		if (response.status == 403)
 			$location.path('/login');
 		
