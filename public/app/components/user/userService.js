@@ -19,5 +19,9 @@ angular.module('horribleFilm')
 		return $http.post('/api/users/', user);
 	};
 	
+	userFactory.updateProfile = function(userName, profile) {
+		return $http.put('/api/users/' + userName, profile);
+	}
+	
 	return userFactory;
 }]);

@@ -98,10 +98,13 @@ module.exports = function(express, app) {
 				if (user != null) {
 					// Make sure we only update fields that aren't empty
 					if (req.body.aboutMe) user.Profile.aboutMe = req.body.aboutMe;
-					if (req.body.favoriteFilms) user.Profile.favoritefilms = req.body.favoriteFilms;
+					if (req.body.favoriteFilms) user.Profile.favoriteFilms = req.body.favoriteFilms;
 					if (req.body.links) user.Profile.links = req.body.links;
 					
 					user.Profile.save();
+					
+					return res.json({success: true});
+					
 				} else {
 					return res.json({success: false, error: "Couldn't find user."});
 				}
