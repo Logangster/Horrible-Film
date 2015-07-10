@@ -30,9 +30,10 @@ angular.module('horribleFilm')
 					AuthToken.setToken(response.data.token);
 					
 					//Temporary solution to redirect upon login to the path they were trying to access before
-					if ($window.localStorage.getItem('redirectPath')) {
-						$location.path($window.localStorage.getItem('redirectPath'));
-						$window.localStorage.removeItem('redirectPath');
+					var path = $window.localStorage.getItem('redirectPath');
+					if (path) {
+					  $window.localStorage.removeItem('redirectPath');
+						$location.path(path);
 					} else {
 						$location.path('/');
 					}
