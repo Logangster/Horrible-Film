@@ -29,10 +29,13 @@
 		 
 		        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
 		          <ul class="nav navbar-nav">  
-					<li ng-if="!main.loggedIn"><a href="/register">Register</a></li>
-					<li><a href="/users">Users</a></li>
+								<li ng-if="!main.loggedIn"><a href="/register">Register</a></li>
+								<li><a href="/users">Users</a></li>
 		          </ul> 
 		          <ul class="nav navbar-nav navbar-right"> 
+								<li ng-if="!main.userName"><a href="/login">Login</a></li>
+								<p class='navbar-text' ng-if="main.userName">You are now logged in as: {{ main.userName }}</p>
+								<li ng-if="main.userName"><a ng-click="main.logout()">Logout</a></li>
 		          </ul> 
 		        </div><!-- /.navbar-collapse --> 
 		      </div><!-- /.container-fluid --> 

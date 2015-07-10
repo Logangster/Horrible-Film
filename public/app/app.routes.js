@@ -9,8 +9,14 @@ angular.module('horribleFilm')
 		
 		.when('/register', {
 			templateUrl: 'app/components/page/register.html',
-			controller: 'RegistrationCtrl',
+			controller: 'SessionCtrl',
 			controllerAs: 'register'	
+		})
+		
+		.when('/login', {
+			templateUrl: 'app/components/page/login.html',
+			controller: 'SessionCtrl',
+			controllerAs: 'session'
 		})
 		
 		// USER ROUTES

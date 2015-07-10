@@ -21,14 +21,11 @@ angular.module('horribleFilm')
 	var authFactory = {};
 	
 	authFactory.login = function(userName, password) {
+		
 		return $http.post('/api/authenticate', {
 			userName: userName,
 			password: password
-		})
-		.then(function(response) {
-			AuthToken.setToken(response.data.token);
-			return response.data;
-		});	
+		});
 	};
 	
 	authFactory.logout = function() {
@@ -40,6 +37,13 @@ angular.module('horribleFilm')
 			return true;
 		else 
 			return false;
+	};
+	
+	authFactory.getUser = function() {
+		if (AuthToken.getToken())
+			return $http.get('/api/me');
+		else
+			return $q.reject({ message: 'Not logged in.'});
 	};
 	
 	return authFactory;	
@@ -58,7 +62,7 @@ angular.module('horribleFilm')
 	};
 	
 	interceptorFactory.responseError = function(response) {
-		console.log('Hey it worked');
+
 		if (response.status == 403)
 			$location.path('/login');
 		

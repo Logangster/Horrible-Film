@@ -87,6 +87,27 @@ module.exports = function(express, app) {
 			});
 		})
 		
+		.put(userMiddleware.authenticate, function(req, res) {
+			
+			User.findOne({ 
+				where: { userName: req.params.user_name },
+				include:[{ model: Profile}]  
+			})
+			.then(function(user) {
+				
+				if (user != null) {
+					// Make sure we only update fields that aren't empty
+					if (req.body.aboutMe) user.Profile.aboutMe = req.body.aboutMe;
+					if (req.body.favoriteFilms) user.Profile.favoritefilms = req.body.favoriteFilms;
+					if (req.body.links) user.Profile.links = req.body.links;
+					
+					user.Profile.save();
+				} else {
+					return res.json({success: false, error: "Couldn't find user."});
+				}
+			});
+		})
+		
 		// Remove user by userName
 		.delete(userMiddleware.authenticate,function(req, res) {
 			
