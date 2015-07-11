@@ -55,8 +55,14 @@ angular.module('horribleFilm')
 	interceptorFactory.request = function(config) {
 		var token = AuthToken.getToken();
 		
-		if (token)
+		if (token) {
 			config.headers['x-access-token'] = token;
+			
+			//Temporary solution to make sure user can't view pages when they are logged in
+			var path = $location.path();
+			if (path === '/register' || path === '/login')
+				$location.path('/error');
+		}
 			
 		return config;
 	};
