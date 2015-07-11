@@ -39,7 +39,7 @@ module.exports = function(express, app) {
 	
 		// Get all users
 		.get(function(req, res) {
-			User.findAll()
+			User.findAll({ order: [['createdAt', 'DESC']]})
 			.then(
 				function(users) {
 					return res.json(users);		

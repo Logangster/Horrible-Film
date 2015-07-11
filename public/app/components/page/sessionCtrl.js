@@ -13,6 +13,8 @@ angular.module('horribleFilm')
 		.then(function(response) {
 			//If user creation was successful, create a flash message and redirect
 			if (response.data.success !== false) {
+				//Emit new user event so that the user list may update in real time
+				socket.emit('user:new', response.data);
 				Flash.create('success', 'User has been successfully created! Login and edit your profile now!!!', 'custom-class');
 				$location.path('/users/' + vm.newUser.userName + '/edit/');
 			} else {
@@ -28,8 +30,6 @@ angular.module('horribleFilm')
 			Auth.login(vm.userName, vm.password).then(function (response) {
 				//If login was successful, log them in and create a flash message for the user to see
 				if (response.data.success == true) {
-					//Send over socket so that any listeners can update their user list
-					socket.emit('user:new', response.data);
 					Flash.create('success', 'You have been successfully logged in!', 'custom-class');
 					AuthToken.setToken(response.data.token);
 					
