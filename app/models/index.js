@@ -1,7 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var Sequelize = require('sequelize');
-var sequelize = new Sequelize(ENV['database']);
+var sequelize = new Sequelize(ENV['DATABASE_URL']);
 sequelize.sync();
 
 //Import all the models except for the index.js file
