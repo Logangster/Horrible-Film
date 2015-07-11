@@ -8,6 +8,8 @@ module.exports = function(sequelize, Sequelize) {
 			unique: true,
 			validate: {
 				notEmpty: true,
+				isAlphanumeric: true,
+				len: [5,23]
 			},
 			allowNull: false
 		},

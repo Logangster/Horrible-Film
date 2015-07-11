@@ -68,6 +68,9 @@ angular.module('horribleFilm')
 		
 		if (response.status == 403)
 			$location.path('/login');
+			
+		if (response.status == 401)
+			$location.path('/error');
 		
 		//Return errors as a promise
 		return $q.reject(response);

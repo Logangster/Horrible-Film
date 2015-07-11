@@ -87,6 +87,9 @@ module.exports = function(express, app) {
 		})
 		
 		.put(userMiddleware.authenticate, function(req, res) {
+			//Make sure users can only edit themselves
+			if (!req.decoded || req.decoded.userName !== req.params.user_name)
+				return res.status(401).send({success: false});
 			
 			User.findOne({ 
 				where: { userName: req.params.user_name },
@@ -115,7 +118,7 @@ module.exports = function(express, app) {
 			
 			//Make sure users can only delete themselves
 			if (!req.decoded || req.decoded.userName !== req.params.user_name)
-				return res.status(403).send({success: false});
+				return res.status(401).send({success: false});
 				
 			User.destroy({ where: { userName: req.params.user_name } })
 			.then(function(user) {

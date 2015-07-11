@@ -15,6 +15,8 @@ angular.module('horribleFilm')
 			if (response.data.success !== false) {
 				Flash.create('success', 'User has been successfully created! Login and edit your profile now!!!', 'custom-class');
 				$location.path('/users/' + vm.newUser.userName + '/edit/');
+			} else {
+				Flash.create('danger', 'One or more errors exist.', 'custom-class');
 			}
 
 		});
