@@ -5,7 +5,6 @@ module.exports = function(express, app) {
 	var User = app.get('models').User;
 	var Profile = app.get('models').Profile;
 	var jwt    = require('jsonwebtoken');
-	var config = require('../../config');
 	var userMiddleware = require('../middleware/user_middleware');
 	
 
@@ -25,7 +24,7 @@ module.exports = function(express, app) {
 				//Sign a token to send back to user since authentication was successful
 				var token = jwt.sign({
 					userName: user.userName,
-				}, config.secret, {
+				}, ENV['secret'] || 'supersecret', {
 					expiresInMinutes: 1440
 				});
 
