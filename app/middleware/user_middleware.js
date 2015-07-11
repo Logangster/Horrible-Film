@@ -1,5 +1,4 @@
 var jwt = require('jsonwebtoken');
-var config = require('../../config');
 
 module.exports = {
 	//Authenticate if user has token
@@ -7,7 +6,7 @@ module.exports = {
 		var token = req.body.token || req.query.token || req.headers['x-access-token'];
 		
 		if (token) {
-			jwt.verify(token, config.secret, function(err, decoded) {
+			jwt.verify(token, process.env.secret || 'supersecret', function(err, decoded) {
 				//Token doesn't verify correctly
 				if (err) {
 					return res.status(403).send({success: false, message: "Token failed to authenticate"});
