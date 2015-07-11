@@ -1,9 +1,11 @@
 var express 			= require('express');
 var app					= express();
+var http				= require('http').Server(app);
 var bodyParser			= require('body-parser');
 var fs 					= require('fs');
 var Sequelize			= require('sequelize');
 var path				= require('path');
+var socketServer = require('./socketServer')(http);
 
 // SETUP DATABASE/MODELS
 // ============================
@@ -33,4 +35,4 @@ app.get('*', function(req, res) {
 	res.sendFile(path.join(__dirname, '/public/app/index.html'));
 });
 
-app.listen(process.env.PORT || 8080);
+http.listen(process.env.PORT || 8080);

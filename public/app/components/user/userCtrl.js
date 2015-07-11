@@ -1,6 +1,6 @@
 angular.module('horribleFilm')
 
-.controller('UserCtrl', ['User', function(User) {
+.controller('UserCtrl', ['User', 'socket', function(User, socket) {
 	
 	var vm = this;
 	
@@ -12,4 +12,10 @@ angular.module('horribleFilm')
 	}
 	
 	getUsers();
+	
+	//If a new user event comes across, make sure to update the user list
+	socket.on('user:new', function(user) {
+		getUsers();
+	});
+	
 }]);

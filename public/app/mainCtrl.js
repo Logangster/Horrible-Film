@@ -21,7 +21,5 @@ angular.module('horribleFilm').controller('MainCtrl', ['Auth', '$rootScope', '$l
 		$event.preventDefault();
 		Auth.logout();
 		$location.path('/');
-	
 	};
-	
 }]);

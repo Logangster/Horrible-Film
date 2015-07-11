@@ -9,6 +9,7 @@ var gulpIgnore = require('gulp-ignore');
 
 gulp.task('scripts', function() {
 	return gulp.src([
+		 './public/app/socket.min.js',
 		 './public/app/app.module.js',
 		 './public/app/app.routes.js', './public/app/mainCtrl.js',
 		 './public/app/components/**/*Service.js', 	 

@@ -1,7 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var Sequelize = require('sequelize');
-var sequelize = new Sequelize(process.env.DATABASE_URL);
+var sequelize = new Sequelize(process.env.DATABASE_URL || 'postgresql://logangsta@localhost:5432/horrible_film');
 sequelize.sync();
 
 //Import all the models except for the index.js file

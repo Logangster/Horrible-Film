@@ -1,6 +1,6 @@
 angular.module('horribleFilm')
-.controller('SessionCtrl', ['User', 'Auth', '$location', '$http', 'AuthToken', 'Flash', '$window',
-	function(User, Auth, $location, $http, AuthToken, Flash, $window) {
+.controller('SessionCtrl', ['User', 'Auth', '$location', '$http', 'AuthToken', 'Flash', '$window', 'socket',
+	function(User, Auth, $location, $http, AuthToken, Flash, $window, socket) {
 	
 	var vm = this;
 
@@ -26,6 +26,8 @@ angular.module('horribleFilm')
 			Auth.login(vm.userName, vm.password).then(function (response) {
 				//If login was successful, log them in and create a flash message for the user to see
 				if (response.data.success == true) {
+					//Send over socket so that any listeners can update their user list
+					socket.emit('user:new', response.data);
 					Flash.create('success', 'You have been successfully logged in!', 'custom-class');
 					AuthToken.setToken(response.data.token);
 					
