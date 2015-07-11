@@ -24,7 +24,7 @@ module.exports = function(express, app) {
 				//Sign a token to send back to user since authentication was successful
 				var token = jwt.sign({
 					userName: user.userName,
-				}, ENV['secret'] || 'supersecret', {
+				}, process.env.secret || 'supersecret', {
 					expiresInMinutes: 1440
 				});
 
