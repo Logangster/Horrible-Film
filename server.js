@@ -15,7 +15,7 @@ app.set('sequelize', models.sequelize);
 
 // SETUP MIDDLEWARE 
 // ============================
-app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use(function(req, res, next) {

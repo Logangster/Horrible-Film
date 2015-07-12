@@ -7,8 +7,9 @@ module.exports = function(express, app) {
 	var jwt    = require('jsonwebtoken');
 	var userMiddleware = require('../middleware/user_middleware');
 	
-
-	
+	/*
+	 * Authenticate the user and return their json web token
+	 */
 	router.post('/authenticate', function(req, res) {
 		//Find user to authenticate by userName
 		User.find({ where: { userName: req.body.userName } }).then(function(user) {
