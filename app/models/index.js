@@ -16,8 +16,10 @@ fs.readdirSync(__dirname)
 
 //Define relationships here
 (function(m) {
-	m.User.hasOne(m.Profile);
-	m.Profile.belongsTo(m.User);
+	m.user.hasOne(m.profile);
+	m.profile.belongsTo(m.user);
+	m.user.hasMany(m.reviews);
+	m.reviews.belongsTo(m.user);
 })(module.exports);
 
 module.exports.sequelize = sequelize;

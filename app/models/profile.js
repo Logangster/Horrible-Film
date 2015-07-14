@@ -1,6 +1,6 @@
 module.exports = function(sequelize, Sequelize) {
 	
-	var Profile = sequelize.define('Profile', {
+	var Profile = sequelize.define('profile', {
 		aboutMe: {
 			type: Sequelize.TEXT,
 			allowNull: false

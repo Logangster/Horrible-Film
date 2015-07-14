@@ -2,8 +2,8 @@ module.exports = function(express, app) {
 	
 	var bcrypt = require('bcrypt-nodejs');
 	var router = express.Router();
-	var User = app.get('models').User;
-	var Profile = app.get('models').Profile;
+	var User = app.get('models').user;
+	var profile = app.get('models').profile;
 	var jwt    = require('jsonwebtoken');
 	var userMiddleware = require('../middleware/user_middleware');
 	
@@ -24,6 +24,7 @@ module.exports = function(express, app) {
 				
 				//Sign a token to send back to user since authentication was successful
 				var token = jwt.sign({
+					userID:	  user.id,
 					userName: user.userName,
 				}, process.env.secret || 'supersecret', {
 					expiresInMinutes: 1440
@@ -58,7 +59,7 @@ module.exports = function(express, app) {
 			.then(function(user) {
 				
 				//Create a blank profile for the user upon registration(prone to change)
-				Profile.create({aboutMe: 'test', favoriteFilms: '', links: ''})
+				profile.create({aboutMe: 'test', favoriteFilms: '', links: ''})
 				.then(function(profile) {
 					user.setProfile(profile);
 				});
@@ -76,7 +77,7 @@ module.exports = function(express, app) {
 		.get(userMiddleware.authenticate, function(req, res) {
 			User.findOne({ 
 				where: { userName: req.params.user_name },
-				include:[{ model: Profile}] 
+				include:[{ model: profile}] 
 			})
 			.then(function(user) {
 				if (user != null) {
@@ -94,17 +95,17 @@ module.exports = function(express, app) {
 			
 			User.findOne({ 
 				where: { userName: req.params.user_name },
-				include:[{ model: Profile}]  
+				include:[{ model: profile}]  
 			})
 			.then(function(user) {
 				
 				if (user != null) {
 					// Make sure we only update fields that aren't empty
-					if (req.body.aboutMe) user.Profile.aboutMe = req.body.aboutMe;
-					if (req.body.favoriteFilms) user.Profile.favoriteFilms = req.body.favoriteFilms;
-					if (req.body.links) user.Profile.links = req.body.links;
+					if (req.body.aboutMe) user.profile.aboutMe = req.body.aboutMe;
+					if (req.body.favoriteFilms) user.profile.favoriteFilms = req.body.favoriteFilms;
+					if (req.body.links) user.profile.links = req.body.links;
 					
-					user.Profile.save();
+					user.profile.save();
 					
 					return res.json({success: true});
 					

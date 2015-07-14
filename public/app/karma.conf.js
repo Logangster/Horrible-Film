@@ -19,6 +19,7 @@ module.exports = function(config) {
       '../assets/javascript/angular-mocks.js',
             '../assets/javascript/angular-route.min.js',
        '../assets/javascript/angular-flash.min.js',
+       '../assets/javascript/socket.io.js',
        'socket.min.js',
        'app.module.js',
        './app.routes.js',
