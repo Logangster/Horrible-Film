@@ -1,5 +1,5 @@
 <div ng-if="review.reviews">
 	<div class="panel panel-primary" ng-repeat="newReview in review.reviews">
-		<div class="panel-body">{{newReview.reviewBody}}</div>
+		<div class="panel-body">{{newReview.film.filmTitle}} - {{newReview.user.userName}}</div>
 	</div>
 </div>

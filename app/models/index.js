@@ -20,6 +20,8 @@ fs.readdirSync(__dirname)
 	m.profile.belongsTo(m.user);
 	m.user.hasMany(m.review);
 	m.review.belongsTo(m.user);
+	m.film.hasMany(m.review);
+	m.review.belongsTo(m.film);
 })(module.exports);
 
 module.exports.sequelize = sequelize;
