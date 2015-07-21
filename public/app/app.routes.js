@@ -38,7 +38,17 @@ angular.module('horribleFilm')
 			templateUrl: 'app/components/user/edit.html',
 			controller: 'UserEditCtrl',
 			controllerAs: 'userEdit'
-		});
+		})
+		
+		// REVIEW ROUTES
+		// =================================
+		
+		.when('/reviews', {
+			templateUrl: 'app/components/review/index.html',
+			controller: 'ReviewCtrl',
+			controllerAs: 'review'
+		})
+		
 		
 	$locationProvider.html5Mode(true);
 });

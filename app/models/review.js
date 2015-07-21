@@ -1,6 +1,6 @@
 module.exports = function(sequelize, Sequelize) {
 	
-	var Review = sequelize.define('reviews', {
+	var Review = sequelize.define('review', {
 		reviewBody: {
 			type: Sequelize.TEXT,
 			validate: {
