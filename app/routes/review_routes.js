@@ -9,7 +9,7 @@ module.exports = function(express, app) {
     
 	router.route('/reviews')
 	
-		.get(authenticate, function(req, res) {
+		.get(function(req, res) {
 			//Retrieve all reviews and include the user that owns each review
 			//TODO: Add films and create yet another foreign key to a film model			
 			Review.findAll({ order: [['createdAt', 'DESC']], include:[{ model: User }, { model: Film }] }).then(function(reviews) {
@@ -18,8 +18,7 @@ module.exports = function(express, app) {
 		})
 		
 		.post(authenticate, function(req, res) {
-			User.findOne({ where: { userName: req.decoded.userName } }).then(function(user) {
-				
+			User.findOne({ where: { userName: req.decoded.userName } }).then(function(user) {		
 
 				//Set the params to include the user id for the foreign key
 				var reviewParams = req.body;
@@ -48,7 +47,7 @@ module.exports = function(express, app) {
 		
 		router.route('/reviews/:id')
 		
-			.get(authenticate, function(req, res) {
+			.get(function(req, res) {
 				Review.findOne({ 
 					where: { id: req.params.id }, 
 					include: [{ model: Film }, { model: User }]
