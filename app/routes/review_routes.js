@@ -41,12 +41,24 @@ module.exports = function(express, app) {
 						else
 							res.json({success: false});
 					});
-					
+							
 				});
-				
-
 			});
 		});
+		
+		router.route('/reviews/:id')
+		
+			.get(authenticate, function(req, res) {
+				Review.findOne({ 
+					where: { id: req.params.id }, 
+					include: [{ model: Film }, { model: User }]
+				}).then(function(review) {
+					if (review != null)
+						return res.json(review);
+					else
+						return res.json({success:false});
+				})
+			})
 		
 	return router;
 }

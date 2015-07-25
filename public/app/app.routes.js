@@ -49,6 +49,20 @@ angular.module('horribleFilm')
 			controllerAs: 'review'
 		})
 		
+		.when('/reviews/new', {
+			templateUrl: 'app/components/review/new.html',
+			controller: 'ReviewNewCtrl',
+			controllerAs: 'reviewNew'
+		})
+		
+		.when('/reviews/:id', {
+			templateUrl: 'app/components/review/show.html',
+			controller: 'ReviewShowCtrl',
+			controllerAs: 'reviewShow'
+		})
+		
+
+		
 		
 	$locationProvider.html5Mode(true);
 });

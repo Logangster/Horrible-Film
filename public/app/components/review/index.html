@@ -1,5 +1,11 @@
+<ul class="nav nav-pills">
+  <li><a href="/reviews/new">New Review</a></li>
+</ul>
 <div ng-if="review.reviews">
 	<div class="panel panel-primary" ng-repeat="newReview in review.reviews">
+		<div class="panel-heading">
+			<a ng-href="/reviews/{{newReview.id}}">{{ newReview.reviewTitle }}</a>
+		</div>
 		<div class="panel-body">{{newReview.film.filmTitle}} - {{newReview.user.userName}}</div>
 	</div>
 </div>

@@ -1,0 +1,65 @@
+<div class="jumbotron">
+  <form class="form-horizontal" ng-submit="reviewNew.createReview()" name="reviewForm" novalidate>
+    <fieldset>
+      <legend class="text-center">Registration</legend>
+      
+       <!-- FILM NAME -->
+      <div class="form-group"  ng-class="{'has-error':reviewForm.filmTitle.$invalid, 'has-success':reviewForm.filmTitle.$valid}">
+        <label for="inputreviewBody" class="col-lg-2 control-label">Film Title</label>
+        <div class="col-lg-10">
+          <input type="text" name="filmTitle" class="form-control" placeholder="Film Title" ng-model="reviewNew.newReview.filmTitle"
+            ng-minlength="3" ng-maxlength="23" ng-required="true">
+          <div style="color:red" ng-show="reviewForm.filmTitle.$dirty && reviewForm.filmTitle.$invalid">
+            <small class="error" ng-show="reviewForm.filmTitle.$error.required">Film Title is required.</small>
+            <small class="error" ng-show="reviewForm.filmTitle.$error.minlength">Film Title must be atleast 3 characters.</small>
+            <small class="error" ng-show="reviewForm.filmTitle.$error.maxlength">Film Title cannot be over 23 characters.</small>
+          </div>
+        </div>
+      </div>
+      
+      <!-- REVIEW NAME -->
+      <div class="form-group"  ng-class="{'has-error':reviewForm.reviewTitle.$invalid, 'has-success':reviewForm.reviewTitle.$valid}">
+        <label for="inputreviewBody" class="col-lg-2 control-label">Review Title</label>
+        <div class="col-lg-10">
+          <input type="text" name="reviewTitle" class="form-control" placeholder="Review Title" ng-model="reviewNew.newReview.reviewTitle"
+            ng-minlength="3" ng-maxlength="23" ng-required="true">
+          <div style="color:red" ng-show="reviewForm.reviewTitle.$dirty && reviewForm.reviewTitle.$invalid">
+            <small class="error" ng-show="reviewForm.reviewTitle.$error.required">Review Title is required.</small>
+            <small class="error" ng-show="reviewForm.reviewTitle.$error.minlength">Review Title must be atleast 3 characters.</small>
+            <small class="error" ng-show="reviewForm.reviewTitle.$error.maxlength">Review Title cannot be over 23 characters.</small>
+          </div>
+        </div>
+      </div>
+      
+      <!-- reviewBody -->
+      <div class="form-group" ng-class="{'has-error':reviewForm.reviewBody.$invalid, 'has-success':reviewForm.reviewBody.$valid}">
+        <label for="inputreviewBody" class="col-lg-2 control-label">Review</label>
+        <div class="col-lg-10">
+          <textarea name="reviewBody" class="form-control"  placeholder="Review" ng-model="reviewNew.newReview.reviewBody"
+            ng-required="true"></textarea>
+          <div style="color:red" ng-show="reviewForm.reviewBody.$dirty && reviewForm.reviewBody.$invalid">
+            <small class="error" ng-show="reviewForm.reviewBody.$error.required">Review Body is required.</small>
+          </div>
+        </div>
+      </div>
+      
+      <!-- links -->
+      <div class="form-group" ng-class="{'has-error':reviewForm.links.$invalid, 'has-success':reviewForm.links.$valid}">
+        <label for="inputlinks" class="col-lg-2 control-label">links</label>
+        <div class="col-lg-10">
+          <input type="text" name="links" class="form-control" id="inputlinks" placeholder="links" ng-model="reviewNew.newReview.links"
+            ng-required="true">
+          <div style="color:red" ng-show="reviewForm.links.$dirty && reviewForm.links.$invalid">
+            <small class="error" ng-show="reviewForm.links.$error.required">links is required.</small>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
